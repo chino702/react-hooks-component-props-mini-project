@@ -1,9 +1,9 @@
 import React from "react";
 
-const Article = ({ title, date = "January 1, 1970", preview, renderMinutesToRead }) => {
+const Article = ({ title, date = "January 1, 1970", preview, minutes }) => {
   const renderEmojis = (count, emoji) => {
-    return Array.from({ length: count }, (_, index) =>(
-      <span key = {index}>{emoji}</span>
+    return Array.from({ length: count }, (_, index) => (
+      <span key={index}>{emoji}</span>
     ));
   };
 
@@ -11,12 +11,12 @@ const Article = ({ title, date = "January 1, 1970", preview, renderMinutesToRead
     if (minutes > 30) {
       const coffeeCups = Math.ceil(minutes / 5);
       return (
-        <>{renderEmojis(coffeeCups,  "☕️")} {minutes} min read</>
+        <span>{renderEmojis(coffeeCups, "☕️")} {minutes} min read</span>
       );
     } else {
       const bentoBoxes = Math.ceil(minutes / 10);
       return (
-        <>{renderEmojis(bentoBoxes, "🍱")} {minutes} min read</>
+        <span>{renderEmojis(bentoBoxes, "🍱")} {minutes} min read</span>
       );
     }
   };
@@ -26,7 +26,7 @@ const Article = ({ title, date = "January 1, 1970", preview, renderMinutesToRead
       <h3>{title}</h3>
       <small>{date}</small>
       <p>{preview}</p>
-      <small>{renderMinutesToRead(minutesToRead)}</small>
+      <small>{renderMinutesToRead(minutes)}</small>
     </article>
   );
 };
